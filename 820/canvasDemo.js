@@ -1,6 +1,10 @@
 var ctx
 var cnv
-
+var x = []
+var y = []
+var dx = []
+var dy = []
+var radius = [];
 
 window.onload = init;
 
@@ -11,15 +15,15 @@ function init(){
   cnv.style.border = 'solid black 2px';
   cnv.style.backgroundColor = 'rgba(0,44,55, .5)';
   ctx = cnv.getContext('2d');
-  animate();
+for(let a= 0; a<1000; a++){
+x[a] = Math.random()*window.innerWidth;
+y[a] = Math.random()*window.innerHeight;
+dx[a] = Math.random()*10 - 5;
+dy[a] = Math.random()*10 - 5;
+radius[a] = 30*Math.random();
 }
-
-var x, y, dx, dy, radius;
-x = Math.random()*window.innerWidth;
-y = Math.random()*window.innerHeight;
-dx = Math.random()*10 - 5;
-dy = Math.random()*10 - 5;
-radius = 30;
+animate();
+}
 
 function animate(){
   requestAnimationFrame(animate);
@@ -28,14 +32,15 @@ function animate(){
   ctx.strokeStyle = 'rgb(85, 107, 47)';
   ctx.lineWidth = '10';
   ctx.fillStyle = 'rgb(255, 140, 0)';
-  ctx.beginPath();
+    for(let a = 0; a<1000; a++){
+      ctx.beginPath();
+      ctx.arc(x[a],y[a], radius[a], Math.PI*2, 0, false);
+      ctx.fill();
+      ctx.stroke();
 
-  ctx.arc(x,y, radius, Math.PI*2, 0, false);
-  ctx.fill();
-  ctx.stroke();
-
-  x +=dx;
-  y +=dy;
-    if(x > window.innerWidth || x<0) dx = -dx;
-    if(y > window.innerHeight || y<0) dy = -dy;
+      x[a] +=dx[a];
+      y[a] +=dy[a];
+        if(x > window.innerWidth || x[a]<0) dx[a] = -dx[a];
+        if(y > window.innerHeight || y[a]<0) dy[a] = -dy[a];
+      }
 }
