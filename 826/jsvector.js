@@ -31,6 +31,11 @@ JSVector.prototype.setDirection = function(angle){
 
 // Get the direction (angle) of the vector
 JSVector.prototype.getDirection = function(){
+    return Math.atan2(this.y, this.x);
+}
+
+//same thing but with degrees
+JSVector.prototype.getDirectionDegrees = function(){
     var angle = Math.atan2(this.y, this.x);
     var degrees = 180*angle/Math.PI;
     return (360+Math.round(degrees))%360;
@@ -50,7 +55,7 @@ JSVector.prototype.sub = function(v2){
 
 // Class method to return a new vector that is the sum of two vectors
 JSVector.addGetNew = function(v1,v2){
-  var new = new JSVector(v1.x + v2.x, v1.y + v2.y);
+  var jabberwocky = new JSVector(v1.x + v2.x, v1.y + v2.y);
 }
 
 // Class method to return a new vector that is the difference of two vectors
@@ -112,13 +117,15 @@ JSVector.prototype.rotate = function(angle) {
 
 // Get the angle between this vector and another one
 JSVector.prototype.angleBetween = function(v2){
+    return this.getDirection() - v2.getDirection();
 }
 
 // Make a copy of this vector
 JSVector.prototype.copy = function(){
+    var new = new JSVector(v1.x, v1.y);
  }
 
 // Override inherited toString() to describe this instance
 JSVector.prototype.toString = function() {
-
+    return "The x is"
 }
