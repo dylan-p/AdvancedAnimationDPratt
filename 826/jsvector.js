@@ -22,8 +22,11 @@ JSVector.prototype.getMagnitude = function(){
 
 // retaining the magnitude.
 JSVector.prototype.setDirection = function(angle){
-    this.x = angle.x;
-    this.y = angle.y;
+    var mag = this.getMagnitude();
+    var x2 = this.getMagnitude() / asin(angle);
+    var y2 = this.getMagnitude() / asin(angle);
+    this.x = this.x + x2;
+    this.y = this.y + y2;
 }
 
 // Get the direction (angle) of the vector
@@ -47,9 +50,7 @@ JSVector.prototype.sub = function(v2){
 
 // Class method to return a new vector that is the sum of two vectors
 JSVector.addGetNew = function(v1,v2){
-  v1.x = v1.x + v2.x;
-  v1.y = v1.x + v2.x;
-  return v1;
+  var new = new JSVector(v1.x + v2.x, v1.y + v2.y);
 }
 
 // Class method to return a new vector that is the difference of two vectors
@@ -88,19 +89,25 @@ JSVector.prototype.limit = function(lim){
 
 // Get the distance between this vector and another one
 JSVector.prototype.distance = function(v2){
-
+    var a = v1.x - v2.x;
+    var b = v1.y - v2.y;
+    var c = Math.sqrt( a*a + b*b );
+    return c;
 }
 
 // Get square of the distance between this vector and another one
 JSVector.prototype.distanceSquared = function(v2){
-
+  var a = v1.x - v2.x;
+  var b = v1.y - v2.y;
+  return a*a + b*b;
 }
 
 // Rotate this vector by some number of radians
 // using the rotation matrix |  cos   -sin  |
 //                           |  sin   +cos  |
 JSVector.prototype.rotate = function(angle) {
-
+  var rotate = this.getDirection(angle) + angle;
+  this.setDirection(rotate);
 }
 
 // Get the angle between this vector and another one
