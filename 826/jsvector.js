@@ -10,23 +10,23 @@ function JSVector(x,y){
 // Set the magnitude of the vector,
 // retaining the angle (direction).
 JSVector.prototype.setMagnitude = function(mag){
-    this.x = mag.x;
-    this.y = mag.y;
+    var x2 = mag * cos(this.getMagnitude())
+    var y2 = mag * sin(this.getMagnitude())
+    this.x = mag.x + x2;
+    this.y = mag.y + y2;
 }
 
 // Get the magnitude of the vector using pythagorean theorem
 JSVector.prototype.getMagnitude = function(){
-    return Math.sqrt(Math.pow(this.x) + Math.pow(this.y);
+    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2);
  }
 // Set the angle (direction) of the vector,
 
 // retaining the magnitude.
 JSVector.prototype.setDirection = function(angle){
-    var mag = this.getMagnitude();
-    var x2 = this.getMagnitude() / asin(angle);
-    var y2 = this.getMagnitude() / asin(angle);
-    this.x = this.x + x2;
-    this.y = this.y + y2;
+    var direction - this.getDirection();
+    this.x = mag * Math.cos(direction);
+    this.y = mag * Math.sin(direction);
 }
 
 // Get the direction (angle) of the vector
@@ -56,6 +56,7 @@ JSVector.prototype.sub = function(v2){
 // Class method to return a new vector that is the sum of two vectors
 JSVector.addGetNew = function(v1,v2){
   var jabberwocky = new JSVector(v1.x + v2.x, v1.y + v2.y);
+  return jabberwocky;
 }
 
 // Class method to return a new vector that is the difference of two vectors
@@ -127,5 +128,5 @@ JSVector.prototype.copy = function(){
 
 // Override inherited toString() to describe this instance
 JSVector.prototype.toString = function() {
-    return "The x is"
+    return "The x is" + this.x + ", the y is" + this.y + ", the magnitude is " + this.getMag();
 }
