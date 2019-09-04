@@ -10,23 +10,24 @@ function JSVector(x,y){
 // Set the magnitude of the vector,
 // retaining the angle (direction).
 JSVector.prototype.setMagnitude = function(mag){
-    var x2 = mag * cos(this.getMagnitude())
-    var y2 = mag * sin(this.getMagnitude())
-    this.x = mag.x + x2;
-    this.y = mag.y + y2;
+    var direction = this.getDirection();
+    var x2 = mag * Math.cos(direction)
+    var y2 = mag * Math.sin(direction)
+    this.x = x2;
+    this.y = y2;
 }
 
 // Get the magnitude of the vector using pythagorean theorem
 JSVector.prototype.getMagnitude = function(){
-    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2);
+    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
  }
 // Set the angle (direction) of the vector,
 
 // retaining the magnitude.
 JSVector.prototype.setDirection = function(angle){
-    var direction - this.getDirection();
-    this.x = mag * Math.cos(direction);
-    this.y = mag * Math.sin(direction);
+    var mag = this.getMagnitude();
+    this.x = mag * Math.cos(angle);
+    this.y = mag * Math.sin(angle);
 }
 
 // Get the direction (angle) of the vector
@@ -61,9 +62,8 @@ JSVector.addGetNew = function(v1,v2){
 
 // Class method to return a new vector that is the difference of two vectors
 JSVector.subGetNew = function(v1,v2){
-  v1.x = v1.x - v2.x;
-  v1.y = v1.x - v2.x;
-  return v1;
+  var jabberwocky = new JSVector(v1.x - v2.x, v1.y - v2.y);
+  return jabberwocky;
 }
 
 // Multiply this vector by a scalar
@@ -123,7 +123,7 @@ JSVector.prototype.angleBetween = function(v2){
 
 // Make a copy of this vector
 JSVector.prototype.copy = function(){
-    var new = new JSVector(v1.x, v1.y);
+    var hvuiarh = new JSVector(this.x, this.y);
  }
 
 // Override inherited toString() to describe this instance
