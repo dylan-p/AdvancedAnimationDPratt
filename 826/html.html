@@ -6,8 +6,8 @@
   <body>
     <script>
         var v1 = new JSVector(3, 4);
-        console.log("Expected Direction is 0.927; actual is " + v1.getDirection());
         console.log("Expected Magnitude is 5, actual is " + v1.getMagnitude());
+        console.log("Expected Direction is 0.927; actual is " + v1.getDirection());
         v1.setMagnitude(7);
         console.log("Expected Magnitude is 7, actual is " + v1.getMagnitude());
         console.log("Expected Direction is 0.927; actual is " + v1.getDirection());
@@ -35,10 +35,18 @@
         v11.normalize();
         console.log("Expected Magnitude is 1, actual is " + v11.getMagnitude());
         console.log("Expected Direction is -2.21; actual is " + v11.getDirection());
-        console.log("Expected Magnitude is 9.3, actual is " + v11.distanceSquared(v10));
+        console.log("Expected Distance is 3.06, actual is " + v11.distance(v10));
+        console.log("Expected Distance squared is 9.3, actual is " + v11.distanceSquared(v10));
         var v12 = v11.copy();
         console.log("Expected Magnitude is 1, actual is " + v12.getMagnitude());
         console.log("Expected Direction is -2.21; actual is " + v12.getDirection());
+        var v13 = new JSVector(3, 4);
+        v13.rotate(45);
+        console.log("Expected Magnitude is 5, actual is " + v13.getMagnitude());
+        console.log("Expected Direction is 1.927; actual is " + v13.getDirection());
+        console.log("" + v13); //Is equivalent of v13.toString();
+        console.log("Expected result is 4.16");
+        console.log(v13.angleBetween(v11));
     </script>
   </body>
 </html>
