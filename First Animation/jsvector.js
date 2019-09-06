@@ -112,7 +112,7 @@ JSVector.prototype.distanceSquared = function(v2){
 // using the rotation matrix |  cos   -sin  |
 //                           |  sin   +cos  |
 JSVector.prototype.rotate = function(angle) {
-  var rotate = this.getDirection(angle) + angle;
+  var rotate = this.getDirection() + angle;
   this.setDirection(rotate);
 }
 
